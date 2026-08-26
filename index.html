@@ -302,15 +302,11 @@
     border-top:1px solid rgba(127,168,201,0.14);
   }
   .hide{display:none !important;}
-  /* let this week's seating breathe wider than the standard content column */
-  @media (min-width: 900px){
-    #preview-card{
-      max-width:1440px;
-      width:calc(100vw - 40px);
-      margin-left:calc(50% - 50vw + 20px);
-      margin-right:calc(50% - 50vw + 20px);
-    }
-  }
+  /* dashboard sits outside .wrap so its cards can each choose their own width;
+     "this week's seating" gets a wider column, everything else matches .wrap. */
+  #dashboard-section{ padding:0 20px; }
+  #dashboard-section > .card{ max-width:1080px; margin-left:auto; margin-right:auto; }
+  #dashboard-section > #preview-card{ max-width:1440px; }
   a{color:var(--accent);}
 </style>
 </head>
@@ -341,7 +337,9 @@
     </div>
   </section>
 
-  <section id="dashboard-section" class="hide">
+</div>
+
+<section id="dashboard-section" class="hide">
     <div class="card">
       <h2>Roster loaded</h2>
       <div class="desc" id="rosterSummary"></div>
@@ -374,9 +372,7 @@
       <div class="desc" id="historySummary">No weeks generated yet.</div>
       <button class="btn-ghost" id="clearHistoryBtn">Clear saved history</button>
     </div>
-  </section>
-
-</div>
+</section>
 
 <footer>
   <div class="wrap" style="padding:0;">Roster and history are stored privately in this browser session &middot; nothing leaves your device except the Excel file you choose to download.</div>
